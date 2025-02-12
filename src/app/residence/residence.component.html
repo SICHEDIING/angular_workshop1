@@ -1,0 +1,32 @@
+
+  <h1 style="text-align: center; padding: 2%;">Liste des résidences</h1>
+<div class="row">
+  <div *ngFor="let R of listResidences" class="col-md-4 mb-4">
+    <div class="card h-100">
+      <img [src]="R.image" class="card-img-top" alt="{{ R.name }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ R.name }}</h5>
+
+        <!-- Affiche l'adresse seulement si R.showAddress est vrai -->
+        <h5 *ngIf="R.showAddress" class="card-title">{{ R.address }}</h5>
+
+        <p class="card-text">{{ R.status }}</p>
+        <button class="btn btn-primary" (click)="show(R)">
+          {{ R.showAddress ? "Hide Location" : "Show Location" }}
+        </button>
+       
+        <button class="btn btn-primary" (click)="addToFavorites(R)">
+          {{ favorites.includes(R) ? '💖 Liked' : '🤍 Like' }}
+        </button>
+        
+        
+        
+      </div>
+    </div>
+  </div>
+  <h2>Favoris</h2>
+  <ul>
+    <li *ngFor="let fav of favorites">{{ fav.name }}</li>
+  </ul>
+</div>
+
