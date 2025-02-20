@@ -1,0 +1,11 @@
+<div class="container mt-4">
+    <h2>Liste des Résidences</h2>
+    <div *ngFor="let residence of residences" class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">{{ residence.name }}</h5>
+        <p class="card-text">{{ residence.description }}</p>
+        <button class="btn btn-primary" (click)="goToDetails(residence.id)">Détails</button>
+      </div>
+    </div>
+  </div>
+  

@@ -24,12 +24,18 @@ export class ResidenceComponent {
   favorites: Residence[] = [];
 
   addToFavorites(residence: Residence) {
-    if (!this.favorites.includes(residence)) {
+    const index = this.favorites.findIndex(fav => fav.id === residence.id);
+    if (index === -1) {
       this.favorites.push(residence);
       alert(`${residence.name} a été ajouté aux favoris ❤️`);
     } else {
       alert(`${residence.name} est déjà dans vos favoris ❤️`);
     }
+  }
+  filteredResidences(): Residence[] {
+    return this.listResidences.filter(residence => 
+      residence.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
   }
   
   
